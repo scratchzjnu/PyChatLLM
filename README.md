@@ -1,12 +1,11 @@
-# LLM对话工具
+# PyChatLLM
 
 ## 功能简介
-本工具是一个基于Python的轻量级大语言模型（LLM）对话客户端，支持与Silicon Flow等API服务对接。核心功能包括：
-- **配置管理**：通过`settings.json`文件存储API密钥、模型选择、最大tokens、温度（temperature）等参数；
+一个基于Python的轻量级大语言模型（LLM）对话客户端，主要是针对在中小学教学环境中，学生往往无法注册大语言模型产品的问题。功能包括：
+- **配置管理**：设置API密钥、模型选择、最大tokens、温度（temperature）等参数；
 - **多模型支持**：内置常见LLM模型下拉选择（如Qwen系列、GLM系列等）；
 - **对话交互**：支持多行输入、Ctrl+回车快捷发送，实时显示对话记录；
 - **状态提示**：发送请求时按钮显示"思考中"，完成后恢复"提交"状态；
-- **跨环境兼容**：支持直接运行Python脚本或打包为Windows单文件可执行程序（`.exe`）。
 
 目前只支持硅基流动（Silicon Flow）的API服务。后续根据需要扩展其他API服务。
 
@@ -16,17 +15,17 @@
 ### 1. 环境准备
 - **Python环境**：需安装Python 3.8+，并通过以下命令安装依赖：
   ```bash
-  pip install -r requirements.txt  # 若有依赖文件（当前项目未显式提供，需根据实际安装requests、tkinter等）
+  pip install -r requirements.txt  # 其实只需要在标准版Python基础上安装requests库即可
   ```
-- **API密钥**：需在`settings.json`中填写有效的Silicon Flow API密钥（`api_key`字段）。
+- **API密钥**：需提前注册Silicon Flow API密钥，并在设置中添加（也可以手动编辑`settings.json`）。
 
 ### 2. 运行程序
 - **直接运行脚本**：
   ```bash
-  python SimChat/main.py
+  python main.py
   ```
 - **运行打包后的可执行文件**：
-  双击`dist/SimChat.exe`（需先通过`pack.bat`打包生成）。
+先通过`pack.bat`打包生成，之后就可以打包（在中小学教学环境中可以在设置好API密钥后通过电子教室发送）。
 
 ### 3. 配置设置
 点击界面右上角"设置"按钮，可修改以下参数：
@@ -44,23 +43,20 @@
 
 ## 问题反馈
 若遇到以下问题，可通过以下方式反馈：
-- **功能建议/BUG报告**：在项目GitHub仓库的[Issues](https://github.com/your-repo/issues)中提交；
-- **紧急问题**：联系开发者邮箱：`dev@example.com`（请提供错误日志和复现步骤）。
+- **功能建议/BUG报告**：在项目GitHub仓库的[Issues](https://github.com/scratchzjnu/PyChatLLM/issues)中提交；
+- **紧急问题**：联系开发者邮箱：`service@ilester.net`（请提供错误日志和复现步骤）。
 
 ---
 
 ## 更新历史
-### v1.0.0（2024-XX-XX）
+### v1.0.0 （2025-05-24）
 - 初始版本发布，支持基本对话功能和配置管理；
 - 实现多行输入、Ctrl+回车快捷发送；
 - 集成模型下拉选择（8+常用模型）。
 
-### v1.1.0（2024-XX-XX）
-- 优化按钮状态提示（发送时显示"思考中"）；
-- 修复打包后配置文件路径错误问题；
-- 新增多环境兼容（支持脚本运行和`.exe`执行）。
-
-### v1.2.0（规划中）
-- 支持流式响应显示；
+### v1.1.0（规划中）
+- 输出区支持流式响应显示、支持Markdown渲染；
 - 增加对话历史导出功能；
 - 优化模型选择下拉框的描述信息（显示模型参数和功能）。
+- 提示词管理、提示词模板功能。
+- 多API支持。
